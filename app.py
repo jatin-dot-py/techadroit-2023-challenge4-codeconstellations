@@ -109,6 +109,8 @@ def comapnies():
         for items in comapny_table.find():
             company_data.append(items)
         return render_template('companies.html',companies=company_data)
+    else:
+        return redirect(url_for('login'))
     
 
 @app.route('/profile',methods=["GET","POST"])
@@ -148,6 +150,13 @@ def comapny_register():
         comapny_table.insert_one({'name':c_name,'email':c_email,'overview':c_overview,'password':c_password,'link':c_link,'logo':c_logo})
         return "Registration Success! <a href='/company-login'>Please Login Here</a>"
     return render_template('company-register.html')
+@app.route('/company-home')
+def company_home():
+    if session.get('company_login'):
+        data=comapny_table.find_one({'email':session.get('email')})
+        return render_template('company-home.html',message=data)
+    else: 
+        redirect(url_for('company-login'))
 
 @app.route('/company-login',methods=["GET","POST"])
 def company_login():
@@ -161,20 +170,14 @@ def company_login():
                 session.clear()
                 session['company_login']=True
                 session['email']=email
-                return redirect(url_for('company-home'))
+                return redirect(url_for('company_home'))
             else:
                 return "An Error has Occured, Please Contact your Administrator"
         else:
             return "An Error has Occured, Please Contact your Administrator"
     return render_template('company-login.html')
 
-@app.route('/company-home')
-def company_home():
-    if session.get('company_login'):
-        data=comapny_table.find_one({'email':session.get('email')})
-        return render_template('company-home.html',message=data)
-    else: 
-        redirect(url_for('company-login'))
+
 
 @app.route('/company-jobs',methods=["GET","POST"])
 def company_jobs():
