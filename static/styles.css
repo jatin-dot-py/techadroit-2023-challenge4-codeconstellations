@@ -1,0 +1,24 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+.hero {
+    background: #ededed;
+    padding: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+footer {
+    background: #ededed;
+    padding: 1rem 0;
+}

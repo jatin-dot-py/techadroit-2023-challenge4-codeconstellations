@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Profile</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add jQuery, Bootstrap JS and Select2 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='logo.png')}}" alt="Job Portal Logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="/company-home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/company-jobs">Post Jobs</a></li>
+                
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% if message %}
+    <div class="container mt-3">
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    <section class="create-job-posting py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h2 class="text-center">Create Job Posting</h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="/company-jobs" method="post">
+                                <div class="form-group">
+                                    <label for="job-title">Job Title</label>
+                                    <input type="text" class="form-control" id="job_title" name="job_title" placeholder="Job Title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="experience">Experience</label>
+                                    <input type="text" class="form-control" id="experience" name="experience" placeholder="Experience (e.g. 2-4 years)" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    <input type="text" class="form-control" id="tags" name="tags" placeholder="Tags (e.g. Python, Data Science, separated by commas)" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Create Job Posting</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <!-- Use the same footer from the homepage -->
+    </footer>
+
+</body>
+
+</html>
