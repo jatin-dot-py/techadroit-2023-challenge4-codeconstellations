@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpportunityOasis</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <!-- Add jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='logo.png')}}" alt="Job Portal Logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/jobs">Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/companies">Companies</a></li>
+                    </ul>
+                    <div class="user-area ml-3">
+                        <a class="btn btn-outline-secondary" href="/profile">Profile And Settings</a>
+                        <a class="btn btn-primary ml-2" href="/login">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1>Find Your Dream Job Today</h1>
+                    <form action="/jobs" method="POST">
+                        <div class="form-row">
+                            <div class="col">
+                                <select class="form-control" name="industry" id="industry">
+                                    <option value="null">Select Industry</option>
+                                    <option value="Fashion">Fashion</option>
+                                    <option value="IT">Tech & IT</option>
+                                    <option value="Automobile">Automobile</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Consultancy">Consultancy</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Healthcare">Healthcare</option>
+                                    <option value="Management">Management</option>
+                                    <option value="Entertainment">Entertainment</option>
+                                    <option value="Logistics">Logistics</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" name="location" id="location">
+                                    <option value="0">Location</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Gurugram">Gurugram</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Banglore">Banglore</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Chennai">Chennai</option>
+                                    <option value="Noida">Noida</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option value="Vishakapatnam">Vishakapatnam</option>
+
+                                    <!-- Add industry options here -->
+                                </select>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" name="experience" id="experience">
+                                    <option value="0">Experience</option>
+                                    <option value="-1">Less than 1 year</option>
+                                    <option value="1-2">1-3 Years</option>
+                                    <option value="3-5">3-5 Years</option>
+                                    <option value="5+">5+ Years</option>
+
+                                </select>
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <img src="{{url_for('static', filename='background.jpg')}}" alt="Career Growth Background" class="img-fluid">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add other sections as needed, such as Featured Jobs, Testimonials, or Blog Posts -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 Job Portal. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

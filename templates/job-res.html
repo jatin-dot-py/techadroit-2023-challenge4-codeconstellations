@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Results</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .job-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .job-card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .job-card-info {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Add your common navbar code here -->
+    </header>
+
+    <section class="job-search-results py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Job Search Results</h2>
+            <div class="row">
+                <!-- Replace with dynamic content from the search results -->
+                {% for items in message %}
+        
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="job-card">
+                        <div class="job-card-title">{{ items['title'] }}</div>
+                        <div class="job-card-info">Experience: {{ items['experience'] }} year</div>
+                        <div class="job-card-info">Search Tags: {{ items['tags'] }}</div>
+                        <button type="button" class="btn btn-primary mt-3">Apply</button>
+                    </div>
+                </div>
+                <!-- Add more job listings as needed -->
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+
+                        

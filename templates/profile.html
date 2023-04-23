@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal - Profile</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add jQuery, Bootstrap JS and Select2 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#"><img src="{{url_for('static', filename='logo.png')}}" alt="Job Portal Logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/jobs">Jobs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/companies">Companies</a></li>
+                    </ul>
+                    <div class="user-area ml-3">
+                        <a class="btn btn-outline-secondary" href="/profile">Profile And Settings</a>
+                        <a class="btn btn-primary ml-2" href="/login">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br><br><br>
+    
+    <section class="profile-display">
+        <div class="container">
+            <h2>My Profile</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        {% if notification %}
+                        <div class="col-md-4 text-center">
+                            <img src="{{ notification['profile_photo']}}" alt="Profile Picture" class="rounded-circle img-thumbnail" width="200" height="200">
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="card-title">{{ notification['name']}}</h4>
+                            <p class="card-text"></p>
+                            <hr>
+                            <h5>Qualifications:</h5>
+                            <p>{{ notification['qualification']}}</p>
+                            <h5>Mobile Number:</h5>
+                            <p>{{ notification['mobile']}}</p>
+                            <h5>Experience:</h5>
+                            <p>{{ notification['experience']}} years</p>
+                            <h5>Skills:</h5>
+                            <p>{{ notification['skills']}}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Use the same footer from the homepage -->
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('.qualifications, .skills').select2({
+                placeholder: 'Select an option',
+
+                tags: true,
+                tokenSeparators: [',', ' '],
+                theme: 'bootstrap4'
+            });
+        });
+    </script>
+</body>
+
+</html>
